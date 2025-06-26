@@ -1,0 +1,238 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charles Wambua - Java Developer Portfolio</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --accent: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 70%;
+            object-fit: cover;
+            border: 5px solid var(--secondary);
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            margin: 1.5rem 0 0.5rem;
+            color: var(--primary);
+        }
+        
+        section {
+            padding: 2rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .education, .experience {
+            margin-bottom: 2rem;
+        }
+        
+        .project {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .project h3 {
+            color: var(--accent);
+        }
+        
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .skills, .contact-links {
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            
+            <img src=" https://imgur.com/a/M8WmYk0="Charles Wambua" class="profile-img">
+            <h1>Charles Wambua</h1>
+            <h2>Java Developer & Computer Science Graduate</h2>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a passionate Java developer with a Bachelor of Science in Computer Science from Garissa University. I specialize in building robust applications using Java, HTML, and CSS. My goal is to create efficient, scalable software solutions that solve real-world problems.</p>
+        </section>
+        
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills">
+                <span class="skill">Java</span>
+                <span class="skill">HTML5</span>
+                <span class="skill">CSS</span>
+                <span class="skill">Cyber security</span>
+                                   
+               
+                <span class="skill">Object-Oriented Programming</span>
+                <span class="skill">Database manag</span>
+                <span class="skill">Software Development</span>
+                <span class="skill">Data Science</span>
+                                    <span class="skill">JavaScript Basics</span>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <p>Garissa University</p>
+                <p>Graduated: June 2024</p>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>School Management System</h3>
+                <p>A comprehensive Java application designed to manage school operations including student records,finance records, staff management, and academic tracking.</p>
+                <p><strong>Technologies used:</strong> Java</p>
+                
+            </div>
+            <div class="project">
+                <h3>Future Project</h3>
+                <p>Space reserved for my next amazing project! Currently working on hospital management system</p>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.</p>
+            <div class="contact-links">
+                <a href="tel:+254745939344" class="contact-link">Phone: +254745939344</a>
+                <a href="mailto:charleswambua.edu@gmail.com" class="contact-link">Email Me</a>
+                <a href="https://github.com/375516521/charlesoftware" target="_blank" class="contact-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/charles-wambua-11b660273" target="_blank" class="contact-link">LinkedIn</a>
+                <a href="https://api.whatsapp.com/send/?phone=745939344&text&type=phone_number&app_absent=0&wame_ctl=1" target="_blank" class="contact-link">WhatsApp</a>
+                <a href="https://charleswambua.twiva.com/682244/show" target="_blank" class="contact-link">My Online Shop</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; <span id="year"></span> Charles Wambua. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Simple JavaScript to show current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // You can add more interactive features here
+        document.querySelectorAll('.project').forEach(project => {
+            project.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            });
+            
+            project.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 3px 10px rgba(0,0,0,0.1)';
+            });
+        });
+    </script>
+</body>
+</html>
