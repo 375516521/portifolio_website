@@ -143,6 +143,87 @@
         }
     </style>
 </head>
+
+  <title>Charles Wambua - Video Background</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    
+    video#backgroundVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Moving text overlay */
+    .moving-text {
+      position: absolute;
+      white-space: nowrap;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000;
+      animation: floatText 10s linear infinite;
+    }
+
+    @keyframes floatText {
+      0% {
+        transform: translateX(-100%);
+        top: 10%;
+      }
+      25% {
+        top: 30%;
+      }
+      50% {
+        top: 50%;
+      }
+      75% {
+        top: 70%;
+      }
+      100% {
+        transform: translateX(100vw);
+        top: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <video id="backgroundVideo" autoplay muted loop>
+    <source src="your-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+
+  <div class="moving-text" id="movingText">Charles Wambua, A Software Developer</div>
+
+  <script>
+    
+    const movingText = document.getElementById("movingText");
+    movingText.addEventListener("animationiteration", () => {
+      const randomTop = Math.floor(Math.random() * 80) + 10; // 10% to 90%
+      movingText.style.top = `${randomTop}%`;
+    });
+  </script>
+
+</body>
+</html>
+ 
 <body>
     <header>
         <div class="container">
