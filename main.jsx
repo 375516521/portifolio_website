@@ -1,0 +1,159 @@
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+export default function Portfolio() {
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme") || "dark";
+    setTheme(saved);
+    document.documentElement.classList.toggle("dark", saved === "dark");
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem("theme", newTheme);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 dark:from-black dark:to-slate-900 text-slate-900 dark:text-slate-100 transition-colors">
+      {/* Toggle */}
+      <button
+        onClick={toggleTheme}
+        className="fixed top-4 right-4 z-50 rounded-full bg-white/20 dark:bg-black/40 backdrop-blur px-4 py-2"
+      >
+        {theme === "dark" ? "☀️" : "🌙"}
+      </button>
+
+      {/* Hero */}
+      <section className="flex flex-col items-center text-center pt-24 pb-20 px-6">
+        <motion.img
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          src="https://imgur.com/a/hf9Qr07"
+          alt="Charles Wambua"
+          className="w-36 h-36 rounded-full border-4 border-sky-400 mb-6"
+        />
+
+        <motion.h1
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-5xl font-extrabold bg-gradient-to-r from-sky-400 to-violet-500 bg-clip-text text-transparent"
+        >
+          Charles Wambua
+        </motion.h1>
+
+        <p className="mt-4 text-lg text-sky-400">
+          Software Developer & Computer Science Graduate
+        </p>
+      </section>
+
+      {/* About */}
+      <Section title="About Me">
+        <p>
+          I am a passionate full stack developer with a Bachelor of Science in
+          Computer Science. I specialize in building robust applications using
+          JavaScript, HTML, and CSS. My goal is to create efficient, scalable
+          software solutions that solve real-world problems.
+        </p>
+      </Section>
+
+      {/* Skills */}
+      <Section title="Technical Skills">
+        <div className="flex flex-wrap gap-3">
+          {[
+            "JavaScript",
+            "HTML5",
+            "Tailwind CSS v4",
+            "Express",
+            "Node",
+            "MongoDB",
+            "React",
+            "Software Development",
+          ].map((skill) => (
+            <span
+              key={skill}
+              className="px-4 py-1 rounded-full bg-gradient-to-r from-sky-400 to-violet-500 text-white text-sm font-semibold"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </Section>
+
+      {/* Projects */}
+      <Section title="Projects">
+        <Project
+          title="School Management System"
+          desc="A comprehensive application designed to manage school operations including student records, finance records, staff management, and academic tracking."
+          tech="JavaScript – MERN"
+        />
+        <Project
+          title="Future Project"
+          desc="Space reserved for my next amazing project! Currently working on hospital management system."
+        />
+      </Section>
+
+      {/* Contact */}
+      <Section title="Get In Touch">
+        <div className="flex flex-wrap gap-4">
+          <Contact href="tel:+254745939344" label="Phone" />
+          <Contact href="mailto:charleswambua.edu@gmail.com" label="Email" />
+          <Contact href="https://github.com/375516521" label="GitHub" />
+          <Contact
+            href="https://www.linkedin.com/in/charles-wambua-11b660273"
+            label="LinkedIn"
+          />
+          <Contact
+            href="https://api.whatsapp.com/send/?phone=745939344"
+            label="WhatsApp"
+          />
+        </div>
+      </Section>
+
+      <footer className="text-center py-10 opacity-70">
+        © {new Date().getFullYear()} Charles Wambua
+      </footer>
+    </div>
+  );
+}
+
+function Section({ title, children }) {
+  return (
+    <section className="max-w-5xl mx-auto mb-16 px-6">
+      <h2 className="text-3xl font-bold mb-6 text-sky-400">{title}</h2>
+      <div className="bg-white/10 dark:bg-black/30 backdrop-blur rounded-2xl p-6">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function Project({ title, desc, tech }) {
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      className="mb-6 p-6 rounded-xl bg-white/10 dark:bg-black/40 border border-white/10"
+    >
+      <h3 className="text-xl font-semibold text-emerald-400">{title}</h3>
+      <p className="mt-2">{desc}</p>
+      {tech && <p className="mt-2 text-sm">{tech}</p>}
+    </motion.div>
+  );
+}
+
+function Contact({ href, label }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      className="px-5 py-2 rounded-xl bg-gradient-to-r from-sky-400 to-violet-500 text-white font-semibold"
+    >
+      {label}
+    </a>
+  );
+}
