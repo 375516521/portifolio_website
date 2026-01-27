@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
   <style>
-    /* ================= THEME VARIABLES ================= */
     :root {
       --bg: #020617;
       --text: #e5e7eb;
@@ -34,7 +33,6 @@
       padding: 0;
       box-sizing: border-box;
       font-family: "Inter", sans-serif;
-      transition: background 0.4s, color 0.4s, border 0.4s;
     }
 
     body {
@@ -51,7 +49,7 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      z-index: -2;
+      z-index: -3;
       opacity: 0.25;
     }
 
@@ -60,7 +58,36 @@
       position: fixed;
       inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,.7), rgba(0,0,0,.85));
+      z-index: -2;
+    }
+
+    /* ================= FLOATING NATURE ================= */
+    .nature-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
       z-index: -1;
+      overflow: hidden;
+    }
+
+    .nature-item {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.35;
+      animation: floatUp linear infinite;
+    }
+
+    body.light .nature-item {
+      opacity: 0.25;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(110vh) rotate(0deg);
+      }
+      to {
+        transform: translateY(-20vh) rotate(360deg);
+      }
     }
 
     /* ================= TOGGLE ================= */
@@ -75,6 +102,7 @@
       cursor: pointer;
       font-size: 1.1rem;
       backdrop-filter: blur(10px);
+      z-index: 10;
     }
 
     /* ================= LAYOUT ================= */
@@ -120,7 +148,6 @@
       backdrop-filter: blur(14px);
     }
 
-    /* ================= SKILLS ================= */
     .skills {
       display: flex;
       flex-wrap: wrap;
@@ -134,10 +161,8 @@
       font-size: 0.85rem;
       font-weight: 600;
       color: #fff;
-      box-shadow: 0 0 15px rgba(56,189,248,0.4);
     }
 
-    /* ================= PROJECTS ================= */
     .project {
       margin-top: 1.3rem;
       padding: 1.6rem;
@@ -148,16 +173,14 @@
     }
 
     .project:hover {
-      transform: translateY(-8px) scale(1.01);
+      transform: translateY(-8px);
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
 
     .project h3 {
       color: var(--accent);
-      margin-bottom: 0.4rem;
     }
 
-    /* ================= CONTACT ================= */
     .contact-links {
       display: flex;
       flex-wrap: wrap;
@@ -187,9 +210,12 @@
 </head>
 
 <body>
+
   <video autoplay muted loop>
     <source src="your-video.mp4" type="video/mp4">
   </video>
+
+  <div class="nature-layer" id="natureLayer"></div>
 
   <button class="theme-toggle" id="toggle">🌙</button>
 
@@ -200,6 +226,7 @@
   </header>
 
   <main class="container">
+
     <section>
       <h2>About Me</h2>
       <p>
@@ -225,11 +252,10 @@
 
     <section>
       <h2>Projects</h2>
-
       <div class="project">
         <h3>School Management System</h3>
         <p>
-          A comprehensive MERN application designed to manage school operations including
+          A comprehensive application designed to manage school operations including
           student records, finance records, staff management, and academic tracking.
         </p>
         <p><strong>Technologies used:</strong> JavaScript – MERN</p>
@@ -253,6 +279,7 @@
         <a class="contact-link" href="https://api.whatsapp.com/send/?phone=745939344" target="_blank">WhatsApp</a>
       </div>
     </section>
+
   </main>
 
   <footer>
@@ -272,10 +299,29 @@
 
     toggle.onclick = () => {
       body.classList.toggle("light");
-      const isLight = body.classList.contains("light");
-      toggle.textContent = isLight ? "☀️" : "🌙";
-      localStorage.theme = isLight ? "light" : "dark";
+      toggle.textContent = body.classList.contains("light") ? "☀️" : "🌙";
+      localStorage.theme = body.classList.contains("light") ? "light" : "dark";
     };
+
+    /* ===== Floating Nature Generator ===== */
+    const natureIcons = ["🍃", "🌿", "🌼", "🍀", "🍏"];
+    const natureLayer = document.getElementById("natureLayer");
+
+    function createNatureItem() {
+      const item = document.createElement("span");
+      item.className = "nature-item";
+      item.textContent = natureIcons[Math.floor(Math.random() * natureIcons.length)];
+      item.style.left = Math.random() * 100 + "vw";
+      item.style.fontSize = Math.random() * 0.8 + 0.8 + "rem";
+      item.style.animationDuration = Math.random() * 20 + 15 + "s";
+      natureLayer.appendChild(item);
+      setTimeout(() => item.remove(), 40000);
+    }
+
+    setInterval(createNatureItem, 1200);
+    for (let i = 0; i < 15; i++) setTimeout(createNatureItem, i * 300);
   </script>
+
 </body>
 </html>
+    
